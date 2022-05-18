@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaurgak-mu-aks-api
+  namespace: kaurgak
+  labels:
+    app: kaurgak-mu-aks-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kaurgak-mu-aks-api
+  template:
+    metadata:
+      labels:
+        app: kaurgak-mu-aks-api
+    spec:
+      nodeSelector:
+        'beta.kubernetes.io/os': linux
+      containers:
+        - name: kaurgak-mu-aks-api
+          image: {{ .Values.imageRegistry }}/kaurgak-mu-aks-api:{{ .Values.apiDockerTag }}
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '250m'
+          ports:
+            - containerPort: 3001

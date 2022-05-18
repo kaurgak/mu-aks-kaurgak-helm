@@ -1,0 +1,4 @@
+imageRegistry: 'acrmuakskaurgakdev.azurecr.io'
+apiDockerTag: '1.0'
+reactDockerTag: '1.0'
+apiUrl: 'http://10.56.46.48:80/api'
