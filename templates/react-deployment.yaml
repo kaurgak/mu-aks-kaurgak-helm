@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kaurgak-mu-aks-react
+  name: kaurgak-mu-aks-react-km
   namespace: kaurgak
   labels:
-    app: kaurgak-mu-aks-react
+    app: kaurgak-mu-aks-react-km
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: kaurgak-mu-aks-react
+      app: kaurgak-mu-aks-react-km
   template:
     metadata:
       labels:
-        app: kaurgak-mu-aks-react
+        app: kaurgak-mu-aks-react-km
     spec:
       nodeSelector:
         'beta.kubernetes.io/os': linux
       containers:
-        - name: kaurgak-mu-aks-react
-          image: {{ .Values.imageRegistry }}/kaurgak-mu-aks-react:{{ .Values.reactDockerTag }}
+        - name: kaurgak-mu-aks-react-km
+          image: {{ .Values.imageRegistry }}/kaurgak-mu-aks-react-km:{{ .Values.reactDockerTag }}
           resources:
             limits:
               memory: '64Mi'
@@ -28,5 +28,4 @@ spec:
             - containerPort: 80
           env:
             - name: API_URL
-              value: {{ .Values.apiUrl | default "http://localhost:3001" }}
-              
+              value: {{ .Values.apiUrl | default "http://localhost:4000" }}
